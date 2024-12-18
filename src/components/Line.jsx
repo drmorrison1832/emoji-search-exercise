@@ -7,13 +7,8 @@ const Line = (props) => {
     <div
       className="line"
       onClick={() => {
-        // setClipboard(props.emoji.symbol);
         navigator.clipboard.writeText(props.emoji.symbol);
         setCopyIndex("Copied!");
-
-        // console.log(clipboard);
-      }}
-      onMouseLeave={() => {
         setTimeout(() => {
           setCopyIndex("");
         }, 1000);
@@ -24,7 +19,7 @@ const Line = (props) => {
       </div>
       <div className="emoji-title">{props.emoji.title}</div>
       <div className="emoji-copied">{copyIndex}</div>
-      {/* <p style={{ color: "grey" }}>{props.emoji.keywords}</p> */}
+      <p className="tags">{props.emoji.keywords}</p>
     </div>
   );
 };
