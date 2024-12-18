@@ -1,19 +1,30 @@
+import { useState } from "react";
+
 const Line = (props) => {
-  // const clipboard = props.clipboard;
-  // const setClipboard = props.setClipboard;
+  const [copyIndex, setCopyIndex] = useState(false);
 
   return (
     <div
+      className="line"
       onClick={() => {
         // setClipboard(props.emoji.symbol);
         navigator.clipboard.writeText(props.emoji.symbol);
+        setCopyIndex("Copied!");
+
         // console.log(clipboard);
       }}
+      onMouseLeave={() => {
+        setTimeout(() => {
+          setCopyIndex("");
+        }, 1000);
+      }}
     >
-      <p>
-        {props.emoji.title} - {props.emoji.symbol}
-      </p>
-      <p style={{ color: "grey" }}>{props.emoji.keywords}</p>
+      <div className="emoji-symbol">
+        {/* {props.index} -  */} {props.emoji.symbol}
+      </div>
+      <div className="emoji-title">{props.emoji.title}</div>
+      <div className="emoji-copied">{copyIndex}</div>
+      {/* <p style={{ color: "grey" }}>{props.emoji.keywords}</p> */}
     </div>
   );
 };

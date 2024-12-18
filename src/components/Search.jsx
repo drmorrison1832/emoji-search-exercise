@@ -6,7 +6,8 @@ const Search = (props) => {
     <header>
       <div>😎 Emoji Search 😎</div>
       <input
-        placeholder="What emoji are you looking for"
+        className="search-box"
+        placeholder="Hastags..."
         type="search"
         name="search"
         value={keywords}
