@@ -23,6 +23,7 @@
 }
 
 header {
+  margin-top: -20px;
   padding: 10px 0;
 }
 
@@ -43,7 +44,7 @@ header {
   margin: 0 auto 10px auto;
 
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   justify-content: center;
 }
 
@@ -80,6 +81,7 @@ label {
   gap: 10px;
   /* margin-bottom: 10px; */
   display: flex;
+  z-index: 2;
 }
 
 .line > div {
@@ -104,11 +106,18 @@ label {
 
 .emoji-copied {
   color: var(--danger);
-  position: absolute;
-  top: 5px;
-  right: 5px;
+  height: 20px;
+  top: 0;
+  position: sticky;
+  top: 0;
   text-align: right;
-  flex-grow: 1;
+  /* flex-grow: 1; */
+  /* background: var(--accent2); */
+  display: flex;
+  justify-content: end;
+}
+
+.emoji-copied > div {
   /* border: 1px solid #000; */
 }
 

@@ -1,13 +1,16 @@
 import { useState } from "react";
 
 import "./App.css";
-import Footer from "./components/Footer";
-import Line from "./components/Line";
+import Copied from "./components/Copied";
 import Search from "./components/Search";
 import SearchTypeSelect from "./components/SearchTypeSelect";
+import Footer from "./components/Footer";
+import Line from "./components/Line";
 import emojis from "./assets/emojiList_mar8cs.json";
 
 function App() {
+  const [copyIndex, setCopyIndex] = useState(false);
+
   const [searchType, setSearchType] = useState("any");
 
   const [keywords, setKeywords] = useState("");
@@ -34,23 +37,45 @@ function App() {
 
   return (
     <>
-      <Search keywords={keywords} setKeywords={setKeywords} search={keywords} />
-      <SearchTypeSelect searchType={searchType} setSearchType={setSearchType} />
+      <Copied copyIndex={copyIndex} setCopyIndex={setCopyIndex} />
+      <header>
+        <Search
+          keywords={keywords}
+          setKeywords={setKeywords}
+          search={keywords}
+          copyIndex={copyIndex}
+          setCopyIndex={setCopyIndex}
+        />
+        <SearchTypeSelect
+          searchType={searchType}
+          setSearchType={setSearchType}
+        />
+      </header>
       <section className="main">
         {emojis.map((emoji, index) => {
           // ADD MATCHES WITH EMOJI NAME !!!
-          return searchType === "any"
-            ? reg.test(emoji.keywords) && (
-                <Line key={index} index={index} emoji={emoji} />
-              )
-            : !cleanArray
-                .map((word) => {
-                  const reg3 = new RegExp(word, "gi");
-                  return reg3.test(emoji.keywords);
-                })
-                .includes(false) && (
-                <Line key={index} index={index} emoji={emoji} />
-              );
+          return reg.test(emoji.symbol) ? (
+            <Line
+              key={index}
+              index={index}
+              emoji={emoji}
+              copyIndex={copyIndex}
+              setCopyIndex={setCopyIndex}
+            />
+          ) : searchType === "any" ? (
+            reg.test(emoji.keywords) && (
+              <Line key={index} index={index} emoji={emoji} />
+            )
+          ) : (
+            !cleanArray
+              .map((word) => {
+                const reg3 = new RegExp(word, "gi");
+                return reg3.test(emoji.keywords);
+              })
+              .includes(false) && (
+              <Line key={index} index={index} emoji={emoji} />
+            )
+          );
         })}
       </section>
       <Footer />

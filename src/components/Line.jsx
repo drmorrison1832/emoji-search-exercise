@@ -1,25 +1,26 @@
 import { useState } from "react";
 
 const Line = (props) => {
-  const [copyIndex, setCopyIndex] = useState(false);
+  // const [copyIndex, setCopyIndex] = useState(false);
+  const { copyIndex, setCopyIndex } = props;
 
   return (
     <div
       className="line"
       onClick={() => {
         navigator.clipboard.writeText(props.emoji.symbol);
-        setCopyIndex("Copied!");
+        setCopyIndex("Copied");
         setTimeout(() => {
           setCopyIndex("");
-        }, 1000);
+        }, 3000);
       }}
     >
       <div className="emoji-symbol">
         {/* {props.index} -  */} {props.emoji.symbol}
       </div>
-      <div className="emoji-copied">{copyIndex}</div>
+      {/* <div className="emoji-copied">{copyIndex}</div> */}
       <div className="emoji-title">{props.emoji.title}</div>
-      <p className="tags">{props.emoji.keywords}</p>
+      <div className="tags">{props.emoji.keywords}</div>
     </div>
   );
 };

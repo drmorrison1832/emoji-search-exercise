@@ -6,7 +6,7 @@ const SearchTypeSelect = (props) => {
 
   return (
     <div className="search-type-section">
-      Match keywords:
+      <span>Match keywords:</span>
       <div className="radios-zone">
         <label htmlFor="search-type-any">
           any

@@ -1,9 +1,8 @@
 const Search = (props) => {
-  const setKeywords = props.setKeywords;
-  const keywords = props.keywords;
+  const { keywords, setKeywords, copyIndex, setCopyIndex } = props;
 
   return (
-    <header>
+    <section>
       <div>😎 Emoji Search 😎</div>
       <input
         className="search-box"
@@ -17,7 +16,8 @@ const Search = (props) => {
           console.log(value);
         }}
       />
-    </header>
+      {/* <div className="emoji-copied">{copyIndex}</div> */}
+    </section>
   );
 };
 
