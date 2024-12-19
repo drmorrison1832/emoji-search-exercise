@@ -62,7 +62,6 @@ function App() {
       </header>
       <section className="main">
         {emojis.map((emoji, index) => {
-          // ADD MATCHES WITH EMOJI NAME !!!
           return reg.test(emoji.symbol) ? (
             <Line
               key={index}
