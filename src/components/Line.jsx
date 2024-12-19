@@ -17,8 +17,8 @@ const Line = (props) => {
       <div className="emoji-symbol">
         {/* {props.index} -  */} {props.emoji.symbol}
       </div>
-      <div className="emoji-title">{props.emoji.title}</div>
       <div className="emoji-copied">{copyIndex}</div>
+      <div className="emoji-title">{props.emoji.title}</div>
       <p className="tags">{props.emoji.keywords}</p>
     </div>
   );
