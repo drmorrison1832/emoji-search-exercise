@@ -2,7 +2,7 @@ import { useState } from "react";
 
 const Line = (props) => {
   // const [copyIndex, setCopyIndex] = useState(false);
-  const { copyIndex, setCopyIndex } = props;
+  const { copyIndex, setCopyIndex, showEmojiName } = props;
 
   return (
     <div
@@ -19,7 +19,9 @@ const Line = (props) => {
         {/* {props.index} -  */} {props.emoji.symbol}
       </div>
       {/* <div className="emoji-copied">{copyIndex}</div> */}
-      <div className="emoji-title">{props.emoji.title}</div>
+      {showEmojiName === "show" && (
+        <div className="emoji-title">{props.emoji.title}</div>
+      )}
       <div className="tags">{props.emoji.keywords}</div>
     </div>
   );

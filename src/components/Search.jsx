@@ -13,7 +13,7 @@ const Search = (props) => {
         onChange={(event) => {
           const value = event.target.value;
           setKeywords(value);
-          console.log(value);
+          // console.log(value);
         }}
       />
       {/* <div className="emoji-copied">{copyIndex}</div> */}
